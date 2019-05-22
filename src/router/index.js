@@ -5,7 +5,6 @@ const Home = resolve => require(['@/views/Home'], resolve)
 const Detail = resolve => require(['@/views/Detail'], resolve)
 const Admin = resolve => require(['@/views/Admin'], resolve)
 const AdminDetail = resolve => require(['@/views/AdminDetail'], resolve)
-const About = resolve => require(['@/views/About'], resolve)
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
 Vue.use(Router)
@@ -34,10 +33,6 @@ let routes = [
     {
         path: '/admin/items/:id',
         component: AdminDetail
-    },
-    {
-        path: '/about',
-        component: About
     },
     {
         path: '*',

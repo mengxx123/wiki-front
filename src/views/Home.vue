@@ -1,21 +1,23 @@
 <template>
     <my-page title="百科" :page="page">
-        <div class="box">
-            <div class="slogan">
-                企业百科解决方案
+        <div class="common-container container">
+            <div class="box">
+                <div class="slogan">
+                    企业百科解决方案
+                </div>
+                <div class="search-box">
+                    <input class="input" v-model="keyword" @input="handlerChange" @keydown="keyDown($event)" placeholder="输入关键词查看或搜索词条">
+                    <ui-icon-button class="icon" icon="search" @click="search" />
+                </div>
             </div>
-            <div class="search-box">
-                <input class="input" v-model="keyword" @input="handlerChange" @keydown="keyDown($event)" placeholder="输入关键词查看或搜索词条">
-                <ui-icon-button class="icon" icon="search" @click="search" />
+            <div class="list-box">
+                <h2>最新词条：</h2>
+                <ul class="list">
+                    <li class="item" v-for="item in items">
+                        <router-link :to="`/items/${item.word}/${item.id}`">{{ item.word }}</router-link>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="list-box">
-            <h2>最新词条：</h2>
-            <ul class="list">
-                <li class="item" v-for="item in items">
-                    <router-link :to="`/items/${item.word}/${item.id}`">{{ item.word }}</router-link>
-                </li>
-            </ul>
         </div>
     </my-page>
 </template>
@@ -69,11 +71,11 @@
 
 <style lang="scss" scoped>
 .box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
     display: flex;
     flex-direction: column;
     padding-top: 80px;
@@ -89,6 +91,7 @@
     display: flex;
     width: 256px;
     height: 48px;
+    margin-bottom: 24px;
     box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
     background-color: #fff;
     .input {
@@ -117,9 +120,9 @@
 }
 .list-box {
     display: flex;
-    position: absolute;
-    left: 16px;
-    bottom: 16px;
+    // position: absolute;
+    // left: 16px;
+    // bottom: 16px;
     .list {
         display: flex;
     }
